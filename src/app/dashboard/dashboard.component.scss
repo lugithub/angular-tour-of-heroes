@@ -1,3 +1,5 @@
+@import '~sass/variables';
+
 /* DashboardComponent's private CSS styles */
 [class*='col-'] {
   float: left;
@@ -37,7 +39,7 @@ h4 {
   border-radius: 2px;
 }
 .module:hover {
-  background-color: #EEE;
+  background-color: $color;
   cursor: pointer;
   color: #607d8b;
 }
