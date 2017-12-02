@@ -9,7 +9,9 @@ import { Hero } from '../hero';
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
   styleUrls: ['./hero-detail.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  //encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.Native
+  //encapsulation: ViewEncapsulation.None
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
