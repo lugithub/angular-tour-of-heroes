@@ -1,3 +1,5 @@
+@import '~sass/styles';
+
 :host {
   display: block;
   border: 1px solid black;
@@ -5,4 +7,13 @@
 
 :host(:hover) {
     border: dashed;
+}
+
+:host-context(.#{$theme-light}) h2 {
+  background-color: #aaaaaa;
+}
+
+:host-context(.#{$theme-dark}) h2 {
+  color: white;
+  background-color: black;
 }
