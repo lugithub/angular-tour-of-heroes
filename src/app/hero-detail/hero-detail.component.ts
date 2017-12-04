@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, HostBinding, HostListener
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
@@ -39,5 +40,23 @@ export class HeroDetailComponent implements OnInit {
   save(): void {
     this.heroService.updateHero(this.hero)
     .subscribe(() => this.goBack());
+  }
+
+  possibleColors = [
+    'darksalmon', 'hotpink', 'lightskyblue', 'goldenrod', 'peachpuff',
+    'mediumspringgreen', 'cornflowerblue', 'blanchedalmond', 'lightslategrey'
+  ];
+  @HostBinding('attr.substituition') substituition: string;
+  @HostBinding('class.accessible-text') accessibleText = false;
+  @HostBinding('class') myClassPreset = 'class1 calss2';
+  @HostBinding('style.color') color: string;
+  @HostBinding('style.border-color') borderColor: string;
+
+  @HostListener('keydown') newColor() {
+    const colorPick = Math.floor(Math.random() * this.possibleColors.length);
+
+    this.color = this.borderColor = this.possibleColors[colorPick];
+    this.substituition = 'test attr.substituition';
+    this.accessibleText = true;
   }
 }
