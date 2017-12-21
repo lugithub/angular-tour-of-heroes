@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { MessageService } from '../message.service';
   encapsulation: ViewEncapsulation.None
 })
 export class MessagesComponent implements OnInit {
-
+  @Input() template;
   constructor(public messageService: MessageService) {}
 
   ngOnInit() {

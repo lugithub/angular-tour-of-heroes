@@ -7,6 +7,9 @@
     <a routerLink="/heroes">Heroes</a>
   </nav>
   <router-outlet></router-outlet>
-  <app-messages></app-messages>
+  <app-messages [template]="testTemplate"></app-messages>
   <button (click)="changeTheme()">theme</button>
 </div>
+<ng-template #testTemplate>
+  <button>hi test</button>
+</ng-template>

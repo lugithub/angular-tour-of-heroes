@@ -6,3 +6,6 @@
   <div *ngFor='let message of messageService.messages'> {{message}} </div>
 
 </div>
+<div *ngIf="template">
+  <ng-container [ngTemplateOutlet]="template"></ng-container>
+</div>
