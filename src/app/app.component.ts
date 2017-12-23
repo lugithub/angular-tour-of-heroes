@@ -1,7 +1,8 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ComponentFactoryResolver } from '@angular/core';
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
 import { MessagesComponent} from './messages/messages.component';
+import { DynamicAnchorDirective } from './dynamic-anchor.directive';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,9 @@ export class AppComponent implements OnInit{
   theme = 'theme-light';
   @ViewChild('testTemplate') testTemplate;
   @ViewChild(MessagesComponent) messages: MessagesComponent;
-  constructor(private heroService: HeroService) {
-
+  @ViewChild(DynamicAnchorDirective) dynamicPlaceHolder: DynamicAnchorDirective;
+  constructor(private heroService: HeroService,
+    private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   ngOnInit() {
@@ -26,6 +28,14 @@ export class AppComponent implements OnInit{
     this.theme =
     this.theme === 'theme-light' ? 'theme-dark' : 'theme-light';
 
-    this.messages.open();
+    this.open();
+  }
+
+  open() {
+    const messagesComponentFactory = this.componentFactoryResolver.resolveComponentFactory(MessagesComponent);
+    const componentRef = this.dynamicPlaceHolder.viewContainer.createComponent(messagesComponentFactory);
+    const instance = componentRef.instance;
+    instance.dataContext = this.heroes[2];
+    instance.template = this.testTemplate;
   }
 }

@@ -11,13 +11,8 @@ import { DynamicAnchorDirective } from '../dynamic-anchor.directive';
 export class MessagesComponent implements OnInit {
   @Input() template;
   @Input() dataContext;
-  @ViewChild(DynamicAnchorDirective) dynamicPlaceHolder: DynamicAnchorDirective;
   constructor(public messageService: MessageService) {}
 
   ngOnInit() {
-  }
-
-  open() {
-    console.log(this.dynamicPlaceHolder);
   }
 }
