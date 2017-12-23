@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input, ViewChild } from '@angular/core';
 import { MessageService } from '../message.service';
+import { DynamicAnchorDirective } from '../dynamic-anchor.directive';
 
 @Component({
   selector: 'app-messages',
@@ -10,9 +11,13 @@ import { MessageService } from '../message.service';
 export class MessagesComponent implements OnInit {
   @Input() template;
   @Input() dataContext;
+  @ViewChild(DynamicAnchorDirective) dynamicPlaceHolder: DynamicAnchorDirective;
   constructor(public messageService: MessageService) {}
 
   ngOnInit() {
   }
 
+  open() {
+    console.log(this.dynamicPlaceHolder);
+  }
 }

@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { RainbowDirective } from './rainbow.directive';
+import { DynamicAnchorDirective } from './dynamic-anchor.directive';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RainbowDirective } from './rainbow.directive';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
-    RainbowDirective
+    RainbowDirective,
+    DynamicAnchorDirective
   ],
   imports: [
     BrowserModule,
