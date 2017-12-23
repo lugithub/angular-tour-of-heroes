@@ -10,6 +10,7 @@
   <app-messages [template]="testTemplate"
     [dataContext] = "heroes[0]"></app-messages>
   <button (click)="changeTheme()">theme</button>
+  <button (click)="close()">remove MessagesComponent instance</button>
 </div>
 <ng-template #testTemplate
   let-hero="data">

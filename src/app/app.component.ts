@@ -13,6 +13,9 @@ export class AppComponent implements OnInit{
   heroes: Hero[] = [];
   title = 'Tour of Heroes';
   theme = 'theme-light';
+  instance: MessagesComponent;
+  indices: {id: string, index: number}[] = [];
+
   @ViewChild('testTemplate') testTemplate;
   @ViewChild(MessagesComponent) messages: MessagesComponent;
   @ViewChild(DynamicAnchorDirective) dynamicPlaceHolder: DynamicAnchorDirective;
@@ -34,8 +37,17 @@ export class AppComponent implements OnInit{
   open() {
     const messagesComponentFactory = this.componentFactoryResolver.resolveComponentFactory(MessagesComponent);
     const componentRef = this.dynamicPlaceHolder.viewContainer.createComponent(messagesComponentFactory);
-    const instance = componentRef.instance;
-    instance.dataContext = this.heroes[2];
-    instance.template = this.testTemplate;
+    this.instance = componentRef.instance;
+    // const viewRef =
+    this.instance.dataContext = this.heroes[2];
+    this.instance.template = this.testTemplate;
+
+    this.indices.push({id: this.instance.id, index: this.indices.length});
+  }
+
+  close() {
+    const index = this.indices[this.indices.length - 1].index;
+    this.indices = this.indices.slice(0, this.indices.length - 1);
+    this.dynamicPlaceHolder.viewContainer.remove(index);
   }
 }
