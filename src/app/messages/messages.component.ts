@@ -9,6 +9,7 @@ import { MessageService } from '../message.service';
 })
 export class MessagesComponent implements OnInit {
   @Input() template;
+  @Input() dataContext;
   constructor(public messageService: MessageService) {}
 
   ngOnInit() {

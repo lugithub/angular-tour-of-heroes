@@ -7,9 +7,11 @@
     <a routerLink="/heroes">Heroes</a>
   </nav>
   <router-outlet></router-outlet>
-  <app-messages [template]="testTemplate"></app-messages>
+  <app-messages [template]="testTemplate"
+    [dataContext] = "heroes[0]"></app-messages>
   <button (click)="changeTheme()">theme</button>
 </div>
-<ng-template #testTemplate>
-  <button>hi test</button>
+<ng-template #testTemplate
+  let-hero="data">
+  <button>hi test {{hero?.name}}</button>
 </ng-template>
