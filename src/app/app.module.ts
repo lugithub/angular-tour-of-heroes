@@ -19,8 +19,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { RainbowDirective } from './rainbow.directive';
 import { DynamicAnchorDirective } from './dynamic-anchor.directive';
 
-
 @NgModule({
+  entryComponents: [MessagesComponent],
   declarations: [
     AppComponent,
     HeroesComponent,
