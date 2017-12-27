@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { InMemoryDataService }  from './in-memory-data.service';
 
@@ -18,6 +19,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { RainbowDirective } from './rainbow.directive';
 import { DynamicAnchorDirective } from './dynamic-anchor.directive';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 
 @NgModule({
   entryComponents: [MessagesComponent],
@@ -29,9 +31,11 @@ import { DynamicAnchorDirective } from './dynamic-anchor.directive';
     DashboardComponent,
     HeroSearchComponent,
     RainbowDirective,
-    DynamicAnchorDirective
+    DynamicAnchorDirective,
+    DynamicFormComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
