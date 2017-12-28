@@ -1,28 +1,43 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, Input, OnInit }  from '@angular/core';
+import { FormGroup }                 from '@angular/forms';
+
+import { QuestionBase }              from '../question-base';
+import { QuestionControlService }    from '../question-control.service';
+import { TextboxQuestion }           from '../question-textbox';
+import { NumberQuestion } from '../question-number';
 
 @Component({
   selector: 'app-dynamic-form',
   templateUrl: './dynamic-form.component.html',
-  styleUrls: ['./dynamic-form.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  providers: [ QuestionControlService ]
 })
 export class DynamicFormComponent implements OnInit {
+
+  @Input() questions: QuestionBase<any>[] = [];
   form: FormGroup;
-  person = {
-    firstname: 'juri',
-    age: 32
-  };
-  keys = Object.keys(this.person);
-  constructor() { }
+  payLoad = '';
+
+  constructor(private qcs: QuestionControlService) {  }
 
   ngOnInit() {
-    const formData = Object.keys(this.person).reduce((accumulator, value) => {
-      return {
-        ...accumulator,
-        [value]: new FormControl(this.person[value])}
-    }, {});
-    this.form = new FormGroup(formData);
+    this.questions = [
+      new TextboxQuestion({
+        key: 'firstname',
+        value: 'foo',
+        label: 'first name',
+        required: true
+      }),
+      new NumberQuestion({
+        key: 'age',
+        value: 32,
+        label: 'age',
+        required: true
+      })
+    ];
+    this.form = this.qcs.toFormGroup(this.questions);
   }
 
+  onSubmit() {
+    this.payLoad = JSON.stringify(this.form.value);
+  }
 }

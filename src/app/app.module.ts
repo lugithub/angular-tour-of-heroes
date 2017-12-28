@@ -20,6 +20,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { RainbowDirective } from './rainbow.directive';
 import { DynamicAnchorDirective } from './dynamic-anchor.directive';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { QuestionComponent } from './question/question.component';
 
 @NgModule({
   entryComponents: [MessagesComponent],
@@ -32,7 +33,8 @@ import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
     HeroSearchComponent,
     RainbowDirective,
     DynamicAnchorDirective,
-    DynamicFormComponent
+    DynamicFormComponent,
+    QuestionComponent
   ],
   imports: [
     ReactiveFormsModule,

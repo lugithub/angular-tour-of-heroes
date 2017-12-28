@@ -1,0 +1,10 @@
+<ng-container [ngSwitch]="question.controlType" [formGroup]="form">
+  <label for="question.key">{{question.label}}</label>
+  <input type="number" *ngSwitchCase="'number'"
+    [attr.id]="question.key" [formControlName]="question.key"
+    [attr.required]="question.required" />
+  <input type="text" *ngSwitchCase="'textbox'"
+    [attr.id]="question.key" [formControlName]="question.key"
+    [attr.required]="question.required"/>
+
+</ng-container>
