@@ -8,7 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-spec-reporter'),
+      require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
@@ -22,7 +22,16 @@ module.exports = function (config) {
     angularCli: {
       environment: 'dev'
     },
-    reporters: ['progress', 'spec'],
+    reporters: ['progress', 'kjhtml'],
+    specReporter: {
+      maxLogLines: 50,             // limit number of lines logged per test
+      suppressErrorSummary: true, // do not print error summary
+      suppressFailed: false,      // do not print information about failed tests
+      suppressPassed: false,      // do not print information about passed tests
+      suppressSkipped: true,      // do not print information about skipped tests
+      showSpecTiming: false,      // print the time elapsed for each spec
+      failFast: true              // test would finish with error when a first fail occurs.
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,

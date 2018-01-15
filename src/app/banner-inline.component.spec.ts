@@ -1,20 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
 import { BannerComponent } from './banner-inline.component';
 
-fdescribe('BannerComponent (inline template)', () => {
+fdescribe('BannerComponent (external template)', () => {
 
   let comp:    BannerComponent;
   let fixture: ComponentFixture<BannerComponent>;
   let de:      DebugElement;
   let el:      HTMLElement;
 
-  beforeEach(() => {
+  // async beforeEach
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ BannerComponent ], // declare the test component
     });
+    //.compileComponents();  // compile template and css
+  }));
+
+  beforeEach(() => {
 
     fixture = TestBed.createComponent(BannerComponent);
 
