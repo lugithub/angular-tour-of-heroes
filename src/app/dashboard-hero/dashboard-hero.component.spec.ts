@@ -1,26 +1,36 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
-import { DebugElement }    from '@angular/core';
+import { Component, DebugElement }    from '@angular/core';
 
 import { DashboardHeroComponent } from './dashboard-hero.component';
 import { Hero } from '../model/hero';
 
+@Component({
+  template: `
+    <dashboard-hero  [hero]="hero"  (selected)="onSelected($event)"></dashboard-hero>`
+})
+class TestHostComponent {
+  hero = new Hero(42, 'Test Name');
+  selectedHero: Hero;
+  onSelected(hero: Hero) { this.selectedHero = hero; }
+}
+
 fdescribe('DashboardHeroComponent', () => {
-  let comp: DashboardHeroComponent;
-  let fixture: ComponentFixture<DashboardHeroComponent>;
+  let comp: TestHostComponent;
+  let fixture: ComponentFixture<TestHostComponent>;
   let debugElement: DebugElement;
   let nativeElement: HTMLElement;
   const expectedHero = new Hero(42, 'Test Name');
 
   beforeEach( async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardHeroComponent ],
+      declarations: [ DashboardHeroComponent, TestHostComponent ],
     })
     .compileComponents(); // compile template and css
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DashboardHeroComponent);
+    fixture = TestBed.createComponent(TestHostComponent);
     comp    = fixture.componentInstance;
     debugElement = fixture.debugElement.query(By.css('h3'));
 
@@ -36,10 +46,7 @@ fdescribe('DashboardHeroComponent', () => {
   });
 
   it('should raise selected event when clicked', () => {
-    let selectedHero: Hero;
-    comp.selected.subscribe((hero: Hero) => selectedHero = hero);
-
     debugElement.triggerEventHandler('click', null);
-    expect(selectedHero).toBe(expectedHero);
+    expect(comp.selectedHero).toBe(expectedHero);
   });
 });
