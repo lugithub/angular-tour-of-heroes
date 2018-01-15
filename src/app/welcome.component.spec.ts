@@ -5,7 +5,7 @@ import { DebugElement }    from '@angular/core';
 import { WelcomeComponent } from './welcome.component';
 import { UserService } from './model/user.service';
 
-fdescribe('WelcomeComponent', () => {
+describe('WelcomeComponent', () => {
   let comp: WelcomeComponent;
   let fixture: ComponentFixture<WelcomeComponent>;
   let debugElement: DebugElement;
