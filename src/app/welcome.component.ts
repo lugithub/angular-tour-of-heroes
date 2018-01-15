@@ -11,8 +11,7 @@ export class WelcomeComponent  implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.welcome = this.userService.isLoggedIn ?
-      'Welcome, ' + this.userService.user.name :
-      'Please log in.';
+    this.userService.getUser()
+      .then(user => this.welcome = user.name);
   }
 }

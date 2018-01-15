@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async, fakeAsync, tick } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 
@@ -10,36 +10,54 @@ fdescribe('WelcomeComponent', () => {
   let fixture: ComponentFixture<WelcomeComponent>;
   let debugElement: DebugElement;
   let nativeElement: HTMLElement;
+  let spy: any;
 
   const userServiceStub = {
     isLoggedIn: true,
     user: { name: 'Test User'}
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
        declarations: [ WelcomeComponent ],
-       providers:    [ {provide: UserService, useValue: userServiceStub } ]
+       providers:    [ UserService ]
     });
+
     fixture = TestBed.createComponent(WelcomeComponent);
     comp = fixture.componentInstance;
     debugElement = fixture.debugElement;
     nativeElement = debugElement.query(By.css('h3')).nativeElement;
-  })
 
-  it('should have class welcome', () => {
-    expect(nativeElement.classList.toString()).toEqual('welcome');
-  });
-
-  it('should show welcome message when isLoggedIn', () => {
-    fixture.detectChanges();
-    expect(nativeElement.textContent).toEqual('Welcome, Test User');
-  });
-
-  it('should show login message when not isLoggedIn', () => {
     const userService = fixture.debugElement.injector.get(UserService);
-    userService.isLoggedIn = false;
-    fixture.detectChanges();
-    expect(nativeElement.textContent).toEqual('Please log in.');
+    spy = spyOn(userService, 'getUser')
+      .and.returnValue(Promise.resolve({name: 'user double'}));
+  }));
+
+  it('should not show user before OnInit', () => {
+    expect(nativeElement.textContent).toBe('');
+     expect(spy.calls.any()).toBe(false);
   });
-}
+
+  it('should still not show user after component initialized', () => {
+    fixture.detectChanges();
+    expect(nativeElement.textContent).toBe('-- not initialized yet --');
+    expect(spy.calls.any()).toBe(true);
+  });
+
+  it('should show user after getUser promise (async)', async(() => {
+    fixture.detectChanges();
+
+    fixture.whenStable().then(() => { // wait for async getQuote
+      fixture.detectChanges();        // update view with quote
+      expect(nativeElement.textContent).toBe('user double');
+    });
+  }));
+
+  it('should show user after getUser promise (fakeAsync)', fakeAsync(() => {
+    fixture.detectChanges();
+    tick();                  // wait for async getQuote
+    fixture.detectChanges(); // update view with quote
+    expect(nativeElement.textContent).toBe('user double');
+  }));
+
+});
