@@ -4,7 +4,7 @@ import { DebugElement }    from '@angular/core';
 
 import { BannerComponent } from './banner-inline.component';
 
-fdescribe('BannerComponent (external template)', () => {
+describe('BannerComponent (external template)', () => {
 
   let comp:    BannerComponent;
   let fixture: ComponentFixture<BannerComponent>;
