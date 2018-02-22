@@ -1,4 +1,5 @@
-import { Component, AfterViewInit, ViewEncapsulation, ElementRef
+import { Component, AfterViewInit, ViewEncapsulation,
+  ElementRef,
   ViewChild } from '@angular/core';
 
 @Component({

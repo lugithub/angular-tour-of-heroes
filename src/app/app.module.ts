@@ -23,6 +23,7 @@ import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { QuestionComponent } from './question/question.component';
 import { SampleComponent } from './sample/sample.component';
 import { SampleTemplateComponent } from './sample-template/sample-template.component';
+import { SampleViewContainerComponent } from './sample-view-container/sample-view-container.component';
 
 @NgModule({
   entryComponents: [MessagesComponent],
@@ -38,7 +39,8 @@ import { SampleTemplateComponent } from './sample-template/sample-template.compo
     DynamicFormComponent,
     QuestionComponent,
     SampleComponent,
-    SampleTemplateComponent
+    SampleTemplateComponent,
+    SampleViewContainerComponent
   ],
   imports: [
     ReactiveFormsModule,
