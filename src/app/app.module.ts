@@ -21,6 +21,7 @@ import { RainbowDirective } from './rainbow.directive';
 import { DynamicAnchorDirective } from './dynamic-anchor.directive';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { QuestionComponent } from './question/question.component';
+import { SampleComponent } from './sample/sample.component';
 
 @NgModule({
   entryComponents: [MessagesComponent],
@@ -34,7 +35,8 @@ import { QuestionComponent } from './question/question.component';
     RainbowDirective,
     DynamicAnchorDirective,
     DynamicFormComponent,
-    QuestionComponent
+    QuestionComponent,
+    SampleComponent
   ],
   imports: [
     ReactiveFormsModule,
