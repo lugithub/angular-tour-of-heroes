@@ -22,6 +22,7 @@ import { DynamicAnchorDirective } from './dynamic-anchor.directive';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { QuestionComponent } from './question/question.component';
 import { SampleComponent } from './sample/sample.component';
+import { SampleTemplateComponent } from './sample-template/sample-template.component';
 
 @NgModule({
   entryComponents: [MessagesComponent],
@@ -36,7 +37,8 @@ import { SampleComponent } from './sample/sample.component';
     DynamicAnchorDirective,
     DynamicFormComponent,
     QuestionComponent,
-    SampleComponent
+    SampleComponent,
+    SampleTemplateComponent
   ],
   imports: [
     ReactiveFormsModule,
