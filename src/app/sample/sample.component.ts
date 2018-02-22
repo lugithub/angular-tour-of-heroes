@@ -11,6 +11,10 @@ export class SampleComponent implements AfterViewInit {
 
   @ViewChild('tref', {read: ElementRef}) tref: ElementRef;
 
+  constructor(private hostElement: ElementRef) {
+    console.log(this.hostElement.nativeElement.outerHTML);
+  }
+
   ngAfterViewInit(): void {
       // outputs `I am span`
       console.log(this.tref.nativeElement.textContent);
