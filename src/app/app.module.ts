@@ -25,6 +25,7 @@ import { SampleComponent } from './sample/sample.component';
 import { SampleTemplateComponent } from './sample-template/sample-template.component';
 import { SampleViewContainerComponent } from './sample-view-container/sample-view-container.component';
 import { InsertEmbeddedViewComponent } from './insert-embedded-view/insert-embedded-view.component';
+import { UseNgTemplateOutletComponent } from './use-ng-template-outlet/use-ng-template-outlet.component';
 
 @NgModule({
   entryComponents: [MessagesComponent],
@@ -42,7 +43,8 @@ import { InsertEmbeddedViewComponent } from './insert-embedded-view/insert-embed
     SampleComponent,
     SampleTemplateComponent,
     SampleViewContainerComponent,
-    InsertEmbeddedViewComponent
+    InsertEmbeddedViewComponent,
+    UseNgTemplateOutletComponent
   ],
   imports: [
     ReactiveFormsModule,
