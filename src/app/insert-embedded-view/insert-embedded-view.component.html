@@ -1,0 +1,13 @@
+<span>I am first span</span>
+<br>
+<ng-container #vc></ng-container>
+<span>I am last span</span>
+<button (click)="insert()">insert</button>
+<button (click)="clear()">clear</button>
+
+<ng-template #tpl let-i="i">
+    <span>I am span {{i}} in template</span>
+    <button (click)="detach(i)">detach</button>
+    <button (click)="move(i, i + 1)">move</button>
+    <br>
+</ng-template>

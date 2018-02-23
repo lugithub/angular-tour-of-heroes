@@ -24,6 +24,7 @@ import { QuestionComponent } from './question/question.component';
 import { SampleComponent } from './sample/sample.component';
 import { SampleTemplateComponent } from './sample-template/sample-template.component';
 import { SampleViewContainerComponent } from './sample-view-container/sample-view-container.component';
+import { InsertEmbeddedViewComponent } from './insert-embedded-view/insert-embedded-view.component';
 
 @NgModule({
   entryComponents: [MessagesComponent],
@@ -40,7 +41,8 @@ import { SampleViewContainerComponent } from './sample-view-container/sample-vie
     QuestionComponent,
     SampleComponent,
     SampleTemplateComponent,
-    SampleViewContainerComponent
+    SampleViewContainerComponent,
+    InsertEmbeddedViewComponent
   ],
   imports: [
     ReactiveFormsModule,
