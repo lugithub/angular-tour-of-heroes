@@ -26,10 +26,17 @@ import { SampleTemplateComponent } from './sample-template/sample-template.compo
 import { SampleViewContainerComponent } from './sample-view-container/sample-view-container.component';
 import { InsertEmbeddedViewComponent } from './insert-embedded-view/insert-embedded-view.component';
 import { UseNgTemplateOutletComponent } from './use-ng-template-outlet/use-ng-template-outlet.component';
+import {
+  UseNgComponentOutletComponent,
+  CompleteComponent
+} from './use-ng-component-outlet/use-ng-component-outlet.component';
 
 @NgModule({
-  entryComponents: [MessagesComponent],
+  entryComponents: [
+    CompleteComponent,
+    MessagesComponent],
   declarations: [
+    CompleteComponent,
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
@@ -44,7 +51,8 @@ import { UseNgTemplateOutletComponent } from './use-ng-template-outlet/use-ng-te
     SampleTemplateComponent,
     SampleViewContainerComponent,
     InsertEmbeddedViewComponent,
-    UseNgTemplateOutletComponent
+    UseNgTemplateOutletComponent,
+    UseNgComponentOutletComponent
   ],
   imports: [
     ReactiveFormsModule,
